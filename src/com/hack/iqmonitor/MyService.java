@@ -26,10 +26,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MyService extends Service {
-
+	Button button;
 	Handler mHandler;
 	ActivityManager mActivity;
 	RunningTaskInfo mRunningInfo;
