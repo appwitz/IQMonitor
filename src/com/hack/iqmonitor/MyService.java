@@ -30,7 +30,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MyService extends Service {
-	Button button;
+	
 	Handler mHandler;
 	ActivityManager mActivity;
 	RunningTaskInfo mRunningInfo;
