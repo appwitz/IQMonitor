@@ -16,11 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Home extends ActionBarActivity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
-
+	Button button;
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the
 	 * navigation drawer.
