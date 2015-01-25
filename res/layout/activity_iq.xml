@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/qim"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/aust" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="10" >
+
+            <ImageView
+                android:id="@+id/im1"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aust" />
+
+            <TextView
+                android:id="@+id/op1"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:padding="5dp"
+                android:text="@string/hello_world"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="2dip"
+                android:layout_height="match_parent"
+                android:background="#00CCFF" />
+
+            <ImageView
+                android:id="@+id/im2"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:padding="5dp"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/op2"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:padding="5dp"
+                android:text="@string/hello_world"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:background="#00CCFF" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="10" >
+
+            <ImageView
+                android:id="@+id/im3"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/op3"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:padding="5dp"
+                android:text="@string/hello_world"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="2dip"
+                android:layout_height="fill_parent"
+                android:background="#00CCFF" />
+
+            <ImageView
+                android:id="@+id/im4"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/op4"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:padding="5dp"
+                android:text="@string/hello_world"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

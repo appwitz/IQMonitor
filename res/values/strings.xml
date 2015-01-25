@@ -11,5 +11,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_section4">HiQ PACKAGE</string>
     <string name="title_section5">CANCELLED LIST</string>
+    <string name="title_activity_iq">IqActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

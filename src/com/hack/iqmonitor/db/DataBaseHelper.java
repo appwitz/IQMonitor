@@ -1,7 +1,6 @@
 package com.hack.iqmonitor.db;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -11,7 +10,6 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
-import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -84,5 +82,140 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
 		return dao.queryForAll();
 	}
 
+	public void updateUsageTime(AppDetails appDetails,final long currentUsageTime) {
+		RuntimeExceptionDao<AppDetails, Integer> dao = getSimpleDataDao();
+		UpdateBuilder<AppDetails, Integer> updateBuilder = dao.updateBuilder();
+		Log.e("time"," " + (appDetails.getUsageTime() + currentUsageTime)) ;
+		appDetails.setUsageTime(appDetails.getUsageTime() + currentUsageTime);
+		appDetails.setTimeStamp(System.currentTimeMillis());
+		try {
+			updateBuilder.updateColumnValue("usageTime",
+					appDetails.getUsageTime());
+			updateBuilder.updateColumnValue("timeStamp",
+					appDetails.getTimeStamp());
+			updateBuilder.where().eq("id", appDetails.getId());
+		//	Log.e("id", "" +appDetails.getId()) ;
+			
+			updateBuilder.update() ;
+			
+			//Log.e("updt", "" + updateBuilder.update());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	
+	public void updateLimitUsageTime(AppDetails appDetails) {
+		RuntimeExceptionDao<AppDetails, Integer> dao = getSimpleDataDao();
+		UpdateBuilder<AppDetails, Integer> updateBuilder = dao.updateBuilder();
+	//	Log.e("time"," " + (appDetails.getUsageTime() + currentUsageTime)) ;
+	//	appDetails.setUsageTime(appDetails.getUsageTime() + currentUsageTime);
+		appDetails.setTimeStamp(System.currentTimeMillis());
+		try {
+			updateBuilder.updateColumnValue("limitUsageTime",
+					appDetails.getLimitUsageTime());
+			updateBuilder.updateColumnValue("timeStamp",
+					appDetails.getTimeStamp());
+			updateBuilder.where().eq("id", appDetails.getId());
+			//Log.e("id", "" +appDetails.getId()) ;
+			
+			updateBuilder.update() ;
+			
+			//Log.e("updt", "" + updateBuilder.update());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateLimitUsageTimeAll(long seconds) {
+		
+		Log.e("secall", " " + seconds) ;
+		RuntimeExceptionDao<AppDetails, Integer> dao = getSimpleDataDao();
+		UpdateBuilder<AppDetails, Integer> updateBuilder = dao.updateBuilder();
+	//	Log.e("time"," " + (appDetails.getUsageTime() + currentUsageTime)) ;
+	//	appDetails.setUsageTime(appDetails.getUsageTime() + currentUsageTime);
+		
+		List<AppDetails> allAddedApps = getAllEntries() ;
+		
+		for (AppDetails appDetails : allAddedApps) {
+			appDetails.setLimitUsageTime(seconds) ;
+			appDetails.setTimeStamp(System.currentTimeMillis());
+			try {
+				updateBuilder.updateColumnValue("limitUsageTime",
+						appDetails.getLimitUsageTime());
+				updateBuilder.updateColumnValue("timeStamp",
+						appDetails.getTimeStamp());
+			
+				updateBuilder.where().eq("id", appDetails.getId());
+				
+				updateBuilder.update() ;
+				
+				Log.e("updt", "" + updateBuilder.update());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+	}
+	
+	
+
+	public void clearYestrdayValues() {
+		// TODO Auto-generated method stub
+		RuntimeExceptionDao<AppDetails, Integer> dao = getSimpleDataDao();
+		UpdateBuilder<AppDetails, Integer> updateBuilder = dao.updateBuilder();
+		List<AppDetails> appDetails = getAllEntries();
+		for (AppDetails appDetails2 : appDetails) {
+			appDetails2.setCancellationId(0);
+			appDetails2.setSessionId(0);
+			appDetails2.setTimeStamp(System.currentTimeMillis());
+			appDetails2.setUsageTime(0);
+			try {
+				updateBuilder.updateColumnValue("usageTime",
+						appDetails2.getUsageTime());
+				updateBuilder.updateColumnValue("timeStamp",
+						appDetails2.getTimeStamp());
+				updateBuilder.updateColumnValue("cancellationId",
+						appDetails2.getCancellationId());
+				updateBuilder.updateColumnValue("sessionId",
+						appDetails2.getSessionId());
+				updateBuilder.where().eq("id", appDetails2.getId());
+				updateBuilder.update();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void updateSessionId(AppDetails appDetails) {
+		
+		//Log.e("secall", " " + seconds) ;
+		RuntimeExceptionDao<AppDetails, Integer> dao = getSimpleDataDao();
+		UpdateBuilder<AppDetails, Integer> updateBuilder = dao.updateBuilder();
+	//	Log.e("time"," " + (appDetails.getUsageTime() + currentUsageTime)) ;
+	//	appDetails.setUsageTime(appDetails.getUsageTime() + currentUsageTime);
+		
+		//List<AppDetails> allAddedApps = getAllEntries() ;
+		
+	
+			appDetails.setTimeStamp(System.currentTimeMillis());
+			try {
+				updateBuilder.updateColumnValue("sessionId",
+						appDetails.getSessionId());
+				updateBuilder.updateColumnValue("timeStamp",
+						appDetails.getTimeStamp());
+			
+				updateBuilder.where().eq("id", appDetails.getId());
+				
+				updateBuilder.update() ;
+				
+				//Log.e("updt", "" + updateBuilder.update());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		
+	}
 }
